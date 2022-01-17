@@ -3,8 +3,7 @@ import { useEffect } from 'react'
 import btnEdit from './btnEdit'
 import btnRemove from './btnRemove'
 
-
-function viewTable(items = []) {
+function viewTable(items = [], prop) {
 	
 	if (items.length > 0) {
 		
@@ -19,7 +18,7 @@ function viewTable(items = []) {
 					<td>{item.gender}</td>
 					<td>{item.alamat}</td>
 					<td>
-						<a onClick={btnEdit} 
+						<a onClick={()=> btnEdit(prop)} 
 						   id="btn-edit" 
 						   className="btn btn-warning btn-sm text-white"
 						>Edit</a>

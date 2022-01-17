@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from "react-router-dom"
 
 import viewTable from './home/viewTable'
-import viewModal from './home/viewModal'
+import ViewModal from './home/viewModal'
 import Navbar from '../layouts/navbar'
 import api from '../api'
 
@@ -16,23 +16,23 @@ class Home extends React.Component {
 		
 		this.state = {
 			renderData:null,
-			renderModal:null
+			renderModal:null,
+			editModal:false
 		};
 	}
 	
 	
 	componentDidMount() {
 		
-		$.ajax({
-			url: api.get
-		}).done(result => {
+		fetch(api.get)
+		.then(res => res.json())
+		.then(result => {
 			
 			this.setState({
-				renderData : viewTable(result),
-				renderModal: viewModal()
+				renderData : viewTable(result, this)
 			});
 		})
-		.fail(result => {
+		.catch(result => {
 			
 			console.log('error get api');
 		})
@@ -67,7 +67,7 @@ class Home extends React.Component {
 						</div>
 					</div>
 				</div>
-				{this.state.renderModal}
+				<ViewModal showing={this} />
 			</>
 		)
 	}

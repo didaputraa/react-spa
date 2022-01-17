@@ -1,9 +1,13 @@
 import btnUpdate from './modal/btnUpdate'
+import viewTable from './viewTable'
 
-function viewModal() {
+
+function ViewModal(prop) {
+	
+	const showModal = prop.showing.state.editModal ? {display: 'block'} : {display:'none'}
 	
 	return (
-		<div className="modal" id="modal-edit" data-backdrop="static" tabIndex="-1">
+		<div className="modal" style={showModal} id="modal-edit" data-backdrop="static" tabIndex="-1">
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
@@ -16,8 +20,18 @@ function viewModal() {
 						</div>
 					</div>
 					<div className="modal-footer">
-						<button className="btn btn-secondary" data-dismiss="modal">Batal</button>
-						<button className="btn btn-primary" onClick={btnUpdate}>Update</button>
+						<button className="btn btn-secondary" 
+								onClick={()=> {
+									prop.showing.setState({
+											editModal:false,
+											renderData: viewTable([])
+										})
+									}
+								}
+						>Batal</button>
+						<button 
+							className="btn btn-primary" 
+						>Update</button>
 					</div>
 				</div>
 			</div>
@@ -25,4 +39,4 @@ function viewModal() {
 	)
 }
 
-export default viewModal
+export default ViewModal

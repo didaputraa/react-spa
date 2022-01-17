@@ -1,7 +1,12 @@
+import {useEffect} from 'react'
 
-function btnEdit() {
+function btnEdit(prop) {
 	
-	$('#modal-edit').modal('show');
+	prop.setState({ 
+		editModal:true 
+	})
+	
+	console.log('show modal')
 }
 
 export default btnEdit;
