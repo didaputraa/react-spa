@@ -1,16 +1,16 @@
-function ViewModal(prop) {
+function ViewModalAdd(prop) {
 	
-	const {editModal,nama,alamat,gender} = prop.showing.state;
+	const {addModal,nama,alamat,gender} = prop.showing.state;
 	const state 	= prop.showing;
-	const showModal = { display: editModal ? 'block' : 'none'};
+	const showModal = { display: addModal ? 'block' : 'none'};
 	
 	return (
-		<div className="modal" style={showModal} id="modal-edit" data-backdrop="static" tabIndex="-1">
+		<div className="modal" style={showModal} id="modal-add" data-backdrop="static" tabIndex="-1">
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
-						<p className="modal-title">Edit data</p>
-						<button className="close" onClick={()=> state.handle_hideModal_edit()}>&times;</button>
+						<p className="modal-title">Insert data</p>
+						<button className="close" onClick={()=> state.handle_hideModal_add()}>&times;</button>
 					</div>
 					<div className="modal-body">
 						<form id="frm">
@@ -53,12 +53,12 @@ function ViewModal(prop) {
 					</div>
 					<div className="modal-footer">
 						<button className="btn btn-secondary" 
-								onClick={()=> state.handle_hideModal_edit()}
+								onClick={()=> state.handle_hideModal_add()}
 						>Batal
 						</button>
 						<button className="btn btn-primary" 
-								onClick={()=> state.btn_handleUpdate()}
-						>Update</button>
+								onClick={()=> state.btn_handleStore()}
+						>Save</button>
 					</div>
 				</div>
 			</div>
@@ -66,4 +66,4 @@ function ViewModal(prop) {
 	)
 }
 
-export default ViewModal
+export default ViewModalAdd
